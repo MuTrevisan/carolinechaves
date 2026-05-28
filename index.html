@@ -9,8 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Baloo+2:wght@400;500;600;700;800&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 <meta property="og:title" content="Caroline Chaves · Psicóloga Infantil e Clínica">
 <meta property="og:description" content="Psicoterapia para crianças, adolescentes e adultos em Araras-SP. Atendimento presencial e online.">
-<meta property="og:image" content="https://mutrevisan.github.io/carolinechaves/perfil.webp">
-<meta property="og:url" content="https://mutrevisan.github.io/carolinechaves/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <style>
@@ -251,17 +249,46 @@
   .hb-blue   { background: var(--sky);   color: #1a4f6e; }
   .hb-mint   { background: var(--mint);  color: #1a5045; }
 
-  /* hero photo — mobile: round avatar, desktop: side panel */
-  .hero-photo-mobile {
-    display: block;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+  /* hero two-col layout */
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .hero-text {
+    text-align: center;
+    flex: 1;
+  }
+
+  /* foto hero — visível em mobile e desktop */
+  .hero-photo-wrap {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-photo-wrap img {
+    width: 260px;
+    height: 320px;
+    border-radius: 50% 50% 48% 52% / 44% 44% 56% 56%;
     object-fit: cover;
     object-position: center top;
-    margin: 28px auto 0;
     border: 5px solid #fff;
-    box-shadow: 0 10px 34px -10px rgba(120,60,20,.35);
+    box-shadow:
+      0 20px 44px -14px rgba(120,60,20,.38),
+      0 0 0 10px rgba(249,200,68,.18);
+    display: block;
+  }
+
+  .hero-photo-sticker {
+    position: absolute;
+    font-size: 36px;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,.2));
+    animation: floatDeco 4s ease-in-out infinite;
+    pointer-events: none;
   }
 
   .hero-cta {
@@ -308,30 +335,6 @@
 
   .btn .arr { transition: transform .22s; }
   .btn:hover .arr { transform: translateX(4px); }
-
-  .scroll-cue {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    font-size: 10px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    opacity: .5;
-  }
-  .scroll-cue .line {
-    width: 1px; height: 36px;
-    background: linear-gradient(to bottom, var(--ink-soft), transparent);
-    animation: scline 2s ease-in-out infinite;
-  }
-  @keyframes scline {
-    0%  { transform: scaleY(.2); transform-origin: top; }
-    50% { transform: scaleY(1);  transform-origin: top; }
-    51% { transform: scaleY(1);  transform-origin: bottom; }
-    100%{ transform: scaleY(.2); transform-origin: bottom; }
-  }
 
   /* ── section commons ── */
   section {
@@ -757,9 +760,29 @@
 
   /* ── DESKTOP ── */
   @media (min-width: 768px) {
-    .hero { padding: 70px 40px 80px; }
+    .hero { padding: 70px 60px 80px; }
 
-    .hero-photo-mobile { display: none; }
+    .hero-inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 60px;
+      max-width: 1100px;
+    }
+
+    .hero-text {
+      text-align: left;
+      flex: 1;
+    }
+
+    .hero-text .hero-eyebrow { justify-content: flex-start; }
+    .hero-text .hero-badges  { justify-content: flex-start; }
+    .hero-text .hero-underline { margin: 6px 0 0; }
+    .hero-text .hero-cta     { justify-content: flex-start; }
+
+    .hero-photo-wrap img {
+      width: 340px;
+      height: 420px;
+    }
 
     .about-grid {
       grid-template-columns: 280px 1fr;
@@ -805,6 +828,8 @@
   <!-- ═══════════ TOPBAR ═══════════ -->
   <nav class="topbar" id="topbar" role="navigation">
     <div class="topbar-inner">
+      <img src="logo.webp" alt="Logo Caroline Chaves" class="topbar-logo">
+      <div class="topbar-divider"></div>
       <div>
         <div class="topbar-name">Caroline Chaves</div>
         <div class="topbar-crp">Psicóloga · CRP 06/165071</div>
@@ -821,48 +846,51 @@
   <!-- ═══════════ HERO ═══════════ -->
   <header class="hero" id="inicio">
     <!-- confetti decos -->
-    <span class="confetti-deco" style="top:10%;left:5%;animation-delay:0s">⭐</span>
-    <span class="confetti-deco" style="top:18%;right:8%;animation-delay:1.2s;font-size:22px">🌈</span>
-    <span class="confetti-deco" style="top:60%;left:3%;animation-delay:.6s;font-size:20px">🌟</span>
-    <span class="confetti-deco" style="bottom:22%;right:5%;animation-delay:2s;font-size:18px">💛</span>
-    <span class="confetti-deco" style="top:40%;right:2%;animation-delay:3s;font-size:14px">✨</span>
+    <span class="confetti-deco" style="top:10%;left:2%;animation-delay:0s">⭐</span>
+    <span class="confetti-deco" style="top:15%;right:3%;animation-delay:1.2s;font-size:22px">🌈</span>
+    <span class="confetti-deco" style="top:65%;left:2%;animation-delay:.6s;font-size:20px">🌟</span>
+    <span class="confetti-deco" style="bottom:18%;right:4%;animation-delay:2s;font-size:18px">💛</span>
 
     <div class="hero-inner">
-      <div class="hero-eyebrow reveal">
-        <span class="star-deco">★</span>
-        Psicóloga · Araras–SP
-        <span class="star-deco">★</span>
+
+      <!-- TEXTO -->
+      <div class="hero-text">
+        <div class="hero-eyebrow reveal">
+          <span class="star-deco">★</span>
+          Psicóloga · Araras–SP
+          <span class="star-deco">★</span>
+        </div>
+
+        <h1>
+          <span class="reveal">Psicóloga</span>
+          <span class="name-big reveal d1">Caroline Chaves</span>
+          <span class="hero-underline reveal d2"></span>
+          <span class="subtitle reveal d2">Um espaço seguro para crescer 🌻</span>
+        </h1>
+
+        <div class="hero-badges reveal d3">
+          <span class="hbadge hb-yellow">🎈 Crianças</span>
+          <span class="hbadge hb-blue">🧑 Adolescentes</span>
+          <span class="hbadge hb-mint">👩 Adultos</span>
+        </div>
+
+        <div class="hero-cta reveal d4">
+          <a class="btn btn-primary" href="https://wa.me/5519996830895" target="_blank" rel="noopener">
+            Agendar consulta <span class="arr">→</span>
+          </a>
+          <a class="btn btn-outline" href="#sobre">
+            Conheça a Carol
+          </a>
+        </div>
       </div>
 
-      <h1>
-        <span class="reveal">Psicóloga</span>
-        <span class="name-big reveal d1">Caroline Chaves</span>
-        <span class="hero-underline reveal d2"></span>
-        <span class="subtitle reveal d2">Um espaço seguro para crescer 🌻</span>
-      </h1>
-
-      <div class="hero-badges reveal d3">
-        <span class="hbadge hb-yellow">🎈 Crianças</span>
-        <span class="hbadge hb-blue">🧑 Adolescentes</span>
-        <span class="hbadge hb-mint">👩 Adultos</span>
+      <!-- FOTO -->
+      <div class="hero-photo-wrap reveal right d2">
+        <img src="perfil3.webp" alt="Caroline Chaves">
+        <span class="hero-photo-sticker" style="top:-18px;right:-14px;animation-delay:.4s">🌻</span>
+        <span class="hero-photo-sticker" style="bottom:20px;left:-18px;animation-delay:1.8s;font-size:28px">⭐</span>
       </div>
 
-      <!-- foto perfil no mobile (logo após o menu topbar area) -->
-      <img src="perfil3.webp" alt="Caroline Chaves" class="hero-photo-mobile reveal d3">
-
-      <div class="hero-cta reveal d4">
-        <a class="btn btn-primary" href="https://wa.me/5519996830895" target="_blank" rel="noopener">
-          Agendar consulta <span class="arr">→</span>
-        </a>
-        <a class="btn btn-outline" href="#sobre">
-          Conheça a Carol
-        </a>
-      </div>
-
-      <div class="scroll-cue reveal d5">
-        <div class="line"></div>
-        <span>scroll</span>
-      </div>
     </div>
   </header>
 
@@ -1037,7 +1065,7 @@
         </svg>
       </a>
     </div>
-    <div class="f-small">© 2026 · Caroline Chaves Psicóloga </div>
+    <div class="f-small">© 2026 · Caroline Chaves Psicóloga · Feito com 💛</div>
   </footer>
 
 </div>
